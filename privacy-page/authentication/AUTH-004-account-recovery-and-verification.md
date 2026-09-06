@@ -3,7 +3,7 @@
 - **Status:** Adopted
 - **Group:** Authentication
 - **Applies to:** Every app with email-based accounts.
-- **Last updated:** 2026-06-16
+- **Last updated:** 2026-08-26
 
 ## Requirement
 
@@ -11,6 +11,9 @@
    account is treated as confirmed.
 2. There **MUST** be a self-service **forgot-password** flow: request a code by
    email, then set a new password (which is subject to [AUTH-001](AUTH-001-password-credentials.md)).
+   The routes that flow runs on — `/forgot` and `/reset`, their four states, and
+   the entry link that makes it reachable — are specified in
+   [PAGE-004](../pages/PAGE-004-password-reset-routes.md).
 3. Verification and recovery responses **MUST** be neutral and identical whether
    or not the email is registered (see [SEC-005](../security/SEC-005-account-enumeration.md)).
    "If that email has an account, a code is on its way." — never "no such user".
@@ -37,4 +40,7 @@ responses stop the recovery flow from becoming an account-enumeration oracle.
 - **OpenCycle / OpenOutdoor:** Cognito email code on sign-up; `/forgot` + `/reset` routes; neutral notice; resend/verify/forgot/reset rate-limited; `preventUserExistenceErrors=ENABLED`.
 - **WebhookNotification:** verification + reset implemented in `lib/auth.ts` / api routes.
 - **Emergency:** no email/password — N/A.
-- **Priorize:** **Gap:** no forgot-password flow yet (tracked).
+- **Priorize:** backend flow implemented; **Gap:** the landing login form has no
+  "Forgot password?" link, so it is unreachable in practice
+  ([PAGE-004](../pages/PAGE-004-password-reset-routes.md) §1).
+- Related: [[PAGE-004-password-reset-routes]], [[AUTH-001-password-credentials]].

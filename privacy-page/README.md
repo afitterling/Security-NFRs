@@ -11,26 +11,32 @@ this folder is the working set for building the page. Folder structure mirrors
 `general-specs/` so every relative cross-link inside the specs still resolves.
 Same convention as [`../support/`](../support/).
 
-## Written for this bundle
+## The route specs
 
 | Doc | What it is |
 |---|---|
-| [route/PRIV-004-privacy-page-route.md](route/PRIV-004-privacy-page-route.md) | **The route spec.** The only doc here that is *about* `/privacy` itself: stable path, reachability, required content, rights actions, rendering, indexing posture, availability. Status `Proposed`, **bundle-local** — promote it to `general-specs/privacy/` (and `INDEX.md`) if you want the ID canonical. |
+| [pages/PAGE-001-privacy-route.md](pages/PAGE-001-privacy-route.md) | **The route spec.** The one doc here that is *about* `/privacy` itself: stable path, reachability, required content, rights actions, rendering, indexing posture, availability. |
+| [pages/PAGE-002-imprint-route.md](pages/PAGE-002-imprint-route.md) | **The imprint spec.** What the Impressum beside this page has to contain, and how it has to be labelled and linked. |
+| [pages/PAGE-003](pages/PAGE-003-support-route.md) · [pages/PAGE-004](pages/PAGE-004-password-reset-routes.md) | Included so cross-links resolve — the support route (where rights requests land) and the reset routes. |
+
+Both were drafted here and are now **canonical** in
+[`../general-specs/pages/`](../general-specs/pages/); these are copies. `PAGE-001`
+was `PRIV-004` while it was bundle-local — that ID is retired and never reused.
 
 ## Copied in (dedicated background, not a numbered spec)
 
 | Doc | What it is |
 |---|---|
-| [store-label/non-tracking-purchases.md](store-label/non-tracking-purchases.md) | ATT vs. App Store privacy label under Guideline 5.1.2(i) — what the privacy page's tracking section has to agree with, and the repeat-rejection trap (stale `NSUserTrackingUsageDescription` in the shipped binary). Copied from `../non-tracking-purchases/`; **not moved**, because `app-store-iap-setup/`, `revenuecat-integration/` and `storekit-paywall-gating/` all reference it in place. |
+| [store-label/non-tracking-purchases.md](store-label/non-tracking-purchases.md) | ATT vs. App Store privacy label under Guideline 5.1.2(i) — what the privacy page's tracking section has to agree with, and the repeat-rejection trap (stale `NSUserTrackingUsageDescription` in the shipped binary). Copied from `../IAP-Subscriptions/non-tracking-purchases/`; **not moved**, because `IAP-Subscriptions/app-store-iap-setup/`, `IAP-Subscriptions/revenuecat-integration/` and `IAP-Subscriptions/storekit-paywall-gating/` all reference it in place. |
 
 ## The page, and what governs each part
 
 | Part | Governing specs |
 |---|---|
-| The route exists at a stable path, 200 over HTTPS, signed-out | [PRIV-004](route/PRIV-004-privacy-page-route.md) §1–3, [UI-006](ui/UI-006-data-privacy-and-support-links.md) §2/§4, [AUTH-002](authentication/AUTH-002-no-tokens-in-urls.md) |
+| The route exists at a stable path, 200 over HTTPS, signed-out | [PAGE-001](pages/PAGE-001-privacy-route.md) §1–3, [UI-006](ui/UI-006-data-privacy-and-support-links.md) §2/§4, [AUTH-002](authentication/AUTH-002-no-tokens-in-urls.md) |
 | It's discoverable — footer, header, in-app, store listing | [UI-008](design/UI-008-unified-footer.md), [UI-007](design/UI-007-navigable-landing-header.md), [UI-006](ui/UI-006-data-privacy-and-support-links.md) §1/§3 |
-| Imprint (Impressum) sits beside it and is linked | [PRIV-002](privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §1, [UI-008](design/UI-008-unified-footer.md) §2 |
-| What the copy must say — collection, purpose, retention, third parties | [PRIV-001](privacy/PRIV-001-data-minimization-and-retention.md), [PRIV-004](route/PRIV-004-privacy-page-route.md) §6–10 |
+| Imprint (Impressum) sits beside it and is linked | [PAGE-002](pages/PAGE-002-imprint-route.md), [PAGE-001](pages/PAGE-001-privacy-route.md) §4, [PRIV-002](privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §1, [UI-008](design/UI-008-unified-footer.md) §2 |
+| What the copy must say — collection, purpose, retention, third parties | [PRIV-001](privacy/PRIV-001-data-minimization-and-retention.md), [PAGE-001](pages/PAGE-001-privacy-route.md) §6–10 |
 | Lawful basis, revocable consent, verified transactional sender | [PRIV-002](privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §4–5 |
 | Tracking section ↔ store label ↔ shipped binary agree | [PRIV-003](privacy/PRIV-003-tracking-consent-att.md) §5, [store-label](store-label/non-tracking-purchases.md), [UI-006](ui/UI-006-data-privacy-and-support-links.md) §6 |
 | Rights are actionable — erasure, export, withdraw consent | [PRIV-002](privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §2–4, [UI-006](ui/UI-006-data-privacy-and-support-links.md) §5 |
@@ -46,7 +52,7 @@ Same convention as [`../support/`](../support/).
 1. **One URL, three places.** The footer link, the in-app settings link, and the
    store-listing privacy-policy field must be the *same* absolute HTTPS URL,
    sourced from one constant. Drift here is the classic App Review rejection.
-   → [PRIV-004](route/PRIV-004-privacy-page-route.md) §5, [UI-006](ui/UI-006-data-privacy-and-support-links.md) §3
+   → [PAGE-001](pages/PAGE-001-privacy-route.md) §5, [UI-006](ui/UI-006-data-privacy-and-support-links.md) §3
 2. **Reachable before any gate.** No account, no paywall, **no consent gate** —
    the page has to render for someone who has decided nothing yet, and with
    consent-gated third-party scripts blocked.
@@ -78,8 +84,11 @@ Same convention as [`../support/`](../support/).
 
 ## Contents
 
-### route/ — the page itself
-- [PRIV-004](route/PRIV-004-privacy-page-route.md) — The `/privacy` route _(bundle-local, Proposed)_
+### pages/ — the routes themselves
+- [PAGE-001](pages/PAGE-001-privacy-route.md) — The `/privacy` route _(the core spec)_
+- [PAGE-002](pages/PAGE-002-imprint-route.md) — The `/imprint` route (Impressum)
+- [PAGE-003](pages/PAGE-003-support-route.md) — The `/support` route _(where rights requests land)_
+- [PAGE-004](pages/PAGE-004-password-reset-routes.md) — The `/forgot` + `/reset` routes _(cross-link target)_
 
 ### privacy/
 - [PRIV-001](privacy/PRIV-001-data-minimization-and-retention.md) — Data minimization & retention
@@ -114,6 +123,8 @@ Same convention as [`../support/`](../support/).
 ### reliability/ · delivery/
 - [REL-001](reliability/REL-001-observability-and-alerting.md) — Observability & alerting (uptime of the privacy URL)
 - [REL-002](reliability/REL-002-resilience-and-failure-modes.md) — Resilience & failure modes
+- [REL-005](reliability/REL-005-diagnostics-surface.md) — Diagnostics surface for support _(cross-link target)_
+- [DATA-001](data-and-api/DATA-001-api-conventions.md) · [DATA-002](data-and-api/DATA-002-storage-conventions.md) — API & storage conventions _(cross-link targets)_
 - [DEL-002](delivery/DEL-002-environments-and-promotion.md) — Environments & promotion
 
 ### accessibility/ · internationalization/ · seo/
@@ -124,4 +135,4 @@ Same convention as [`../support/`](../support/).
 - [SEO-003](seo/SEO-003-metadata-and-social-cards.md) — Page metadata & canonical URLs
 - [SEO-004](seo/SEO-004-structured-data.md) — Structured data (JSON-LD)
 
-_Assembled 2026-08-09 from `general-specs/` and `non-tracking-purchases/`._
+_Assembled 2026-08-09 from `general-specs/` and `IAP-Subscriptions/non-tracking-purchases/`._

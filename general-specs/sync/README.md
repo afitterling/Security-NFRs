@@ -12,3 +12,4 @@ visibility), not a specific storage vendor or transport.
 | [SYNC-002](SYNC-002-background-sync-cadence.md) | Sync cadence (launch + periodic) | Adopted |
 | [SYNC-003](SYNC-003-durable-credentials.md) | Durable, device-only credentials (stay signed in) | Adopted |
 | [SYNC-004](SYNC-004-sync-status-visibility.md) | Sync status & last-synced visibility | Adopted |
+| [SYNC-005](SYNC-005-local-store-source-of-truth.md) | Local store as source of truth (platform-mirrored sync) | Proposed |

@@ -3,7 +3,13 @@
 - **Status:** Proposed
 - **Group:** User interface & design
 - **Applies to:** All client apps (web + native).
-- **Last updated:** 2026-06-20
+- **Last updated:** 2026-08-26
+
+The **routes** this spec points at are specified in their own right:
+[PAGE-001](../pages/PAGE-001-privacy-route.md) (`/privacy`) and
+[PAGE-003](../pages/PAGE-003-support-route.md) (`/support`). This spec governs
+the **links** — that every client surfaces them, that they resolve, and that
+they match the store listing.
 
 ## Requirement
 
@@ -51,3 +57,7 @@ links honest against the store listing.
 ## Implementation notes
 
 - Sender/recipient addresses (`no-reply@sp33c.tech` → confirmation, `info@sp33c.tech` → support) are already configured; this spec only requires the support flow to use them.
+- §5 describes the support flow's behaviour; the full route contract — the four
+  addressable states, the inert `GET /support/confirm`, rate limiting on the
+  public write endpoint — is [PAGE-003](../pages/PAGE-003-support-route.md).
+- Related: [[PAGE-001-privacy-route]], [[PAGE-003-support-route]], [[UI-008-unified-footer]].

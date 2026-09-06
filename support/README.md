@@ -10,6 +10,13 @@ this folder is the working set for building the form. One doc was **moved** here
 because it is dedicated to this feature (see below). Folder structure mirrors
 `general-specs/` so every relative cross-link inside the specs still resolves.
 
+## The route spec
+
+| Doc | What it is |
+|---|---|
+| [pages/PAGE-003-support-route.md](pages/PAGE-003-support-route.md) | **The route spec.** The one doc here that is *about* `/support` itself: the paths, the four addressable states, the inert `GET /support/confirm`, the public write endpoint, indexing and availability. Canonical in [`../general-specs/pages/`](../general-specs/pages/); this is a copy. |
+| [pages/PAGE-001](pages/PAGE-001-privacy-route.md) · [pages/PAGE-002](pages/PAGE-002-imprint-route.md) · [pages/PAGE-004](pages/PAGE-004-password-reset-routes.md) | The sibling route specs — included so cross-links resolve. `PAGE-004` shares this flow's token pattern with a 1h TTL. |
+
 ## Moved here (dedicated to the support form)
 
 | Doc | What it is |
@@ -20,7 +27,7 @@ because it is dedicated to this feature (see below). Folder structure mirrors
 
 | Step | Governing specs |
 |---|---|
-| Support link is reachable, signed-out, from app + store listing | [UI-006](ui/UI-006-data-privacy-and-support-links.md), [UI-008](design/UI-008-unified-footer.md), [UI-007](design/UI-007-navigable-landing-header.md) |
+| Support link is reachable, signed-out, from app + store listing | [PAGE-003](pages/PAGE-003-support-route.md) §1–4, [UI-006](ui/UI-006-data-privacy-and-support-links.md), [UI-008](design/UI-008-unified-footer.md), [UI-007](design/UI-007-navigable-landing-header.md) |
 | The page renders (responsive, labelled, localized, indexable) | [UI-001](design/UI-001-responsive-layout.md), [UI-004](design/UI-004-usability-baseline.md), [A11Y-001](accessibility/A11Y-001-baseline.md), [I18N-001](internationalization/I18N-001-localization.md), [SEO-002](seo/SEO-002-sitemap.md), [SEO-003](seo/SEO-003-metadata-and-social-cards.md) |
 | `POST /support` accepts the submission | [SEC-002](security/SEC-002-rate-limiting-and-lockout.md), [SEC-003](security/SEC-003-request-integrity-csrf.md), [SEC-006](security/SEC-006-edge-rate-limiting.md), [DATA-001](data-and-api/DATA-001-api-conventions.md), [gotchas](double-opt-in/gotchas.md) |
 | Request is parked + a confirm token is issued | [token-pattern](double-opt-in/token-pattern.md), [DATA-002](data-and-api/DATA-002-storage-conventions.md), [PRIV-001](privacy/PRIV-001-data-minimization-and-retention.md) |
@@ -53,6 +60,12 @@ because it is dedicated to this feature (see below). Folder structure mirrors
    `info@sp33c.tech`, `Reply-To` = the submitter.
 
 ## Contents
+
+### pages/ — the routes themselves
+- [PAGE-003](pages/PAGE-003-support-route.md) — The `/support` route _(the core spec)_
+- [PAGE-001](pages/PAGE-001-privacy-route.md) — The `/privacy` route _(linked at the submit control)_
+- [PAGE-002](pages/PAGE-002-imprint-route.md) — The `/imprint` route _(the second contact means)_
+- [PAGE-004](pages/PAGE-004-password-reset-routes.md) — The `/forgot` + `/reset` routes _(same token pattern)_
 
 ### double-opt-in/ — the confirmation flow
 - [feedback-form.md](double-opt-in/feedback-form.md) — the form itself _(moved)_
@@ -105,6 +118,7 @@ because it is dedicated to this feature (see below). Folder structure mirrors
 - [SEO-001](seo/SEO-001-robots-txt.md) — robots.txt
 - [SEO-002](seo/SEO-002-sitemap.md) — sitemap.xml
 - [SEO-003](seo/SEO-003-metadata-and-social-cards.md) — Page metadata & canonical URLs
+- [SEO-004](seo/SEO-004-structured-data.md) — Structured data _(cross-link target)_
 - [DEL-002](delivery/DEL-002-environments-and-promotion.md) — Environments & promotion
 
-_Assembled 2026-08-09 from `general-specs/` and `double-opt-in-auth/`._
+_Assembled 2026-08-09 from `general-specs/` and `double-opt-in-auth/`; route spec added 2026-08-26._

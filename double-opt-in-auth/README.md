@@ -14,6 +14,20 @@ your own table, mailer, and routes to reuse it.
 > Signup confirmation, the landing feedback form, and the "Forgot password?"
 > link are **designed here and being built**.
 
+## Route specs
+
+This folder is the **recipe**. The normative route contracts that consume it are
+in [`../general-specs/pages/`](../general-specs/pages/):
+
+| Flow | Route spec |
+|---|---|
+| Contact / feedback → `POST /support` → confirm → sent | [PAGE-003](../general-specs/pages/PAGE-003-support-route.md) |
+| Password reset → `/forgot` → mail → `/reset` | [PAGE-004](../general-specs/pages/PAGE-004-password-reset-routes.md) |
+| Signup activation | not yet specified — [signup-confirmation.md](signup-confirmation.md) is the design |
+
+Same token pattern in all three; the TTLs differ (support **24h**, reset **1h**,
+signup confirm **24h** proposed).
+
 ## The one pattern behind all flows
 
 ```

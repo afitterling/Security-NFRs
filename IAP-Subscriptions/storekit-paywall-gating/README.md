@@ -3,7 +3,7 @@
 Reusable spec for gating a premium feature behind a **StoreKit 2 non-consumable** in a native
 macOS app, and testing it. Complements:
 - `../app-store-iap-setup/` — App Store Connect product/price/API setup (server side).
-- `../general-specs-payment/` — web payment flows (different surface).
+- `../../general-specs-payment/` — web payment flows (different surface).
 
 This spec is the **client/app side**: how the app decides "unlocked", how the paid feature is
 enforced, what a purchase returns, and the repeatable sandbox test procedure.

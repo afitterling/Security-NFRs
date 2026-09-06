@@ -1,15 +1,17 @@
-# PRIV-004 — The `/privacy` route
+# PAGE-001 — The `/privacy` route
 
-- **Status:** Proposed — **bundle-local**. Promote to
-  `general-specs/privacy/PRIV-004-…` to make it canonical (the ID is reserved
-  here, not yet in `general-specs/INDEX.md`).
-- **Group:** Privacy
+- **Status:** Proposed
+- **Group:** Public pages & routes
 - **Applies to:** Every app's public web surface. The native clients link *to*
   this route rather than reimplementing it ([UI-006](../ui/UI-006-data-privacy-and-support-links.md) §1).
-- **Last updated:** 2026-08-09
+- **Last updated:** 2026-08-26
+- **History:** Drafted as bundle-local `PRIV-004` in `privacy-page/route/`;
+  promoted here when the `PAGE` group was created. `PRIV-004` is **retired
+  unused** and MUST NOT be reassigned.
 
-This is the one spec that is about the **route itself**. Everything else in this
-folder is a cross-cutting requirement that happens to land on it.
+This spec is about the **route itself** — where it lives, that it resolves, and
+that its claims match the shipped system. The cross-cutting requirements that
+happen to land on it live in their own groups and are linked from here.
 
 ## Requirement
 
@@ -32,7 +34,8 @@ folder is a cross-cutting requirement that happens to land on it.
 4. An **imprint / legal notice** (Impressum) **MUST** be reachable as a sibling
    route and linked from the privacy page, and the privacy page **MUST** be
    linked from the unified footer of every page
-   ([PRIV-002](../privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §1,
+   ([PAGE-002](PAGE-002-imprint-route.md),
+   [PRIV-002](../privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §1,
    [UI-008](../design/UI-008-unified-footer.md) §2).
 5. The same absolute URL **MUST** be used in the footer, in the in-app
    settings/about link, and in the store listing's privacy-policy field — **one
@@ -59,7 +62,7 @@ folder is a cross-cutting requirement that happens to land on it.
    shipped binary. For a no-tracking app it **MUST** state that no advertising
    identifier is collected and no data is shared with data brokers — and the
    binary **MUST** back that up (no ATT string, no `collectDeviceIdentifiers()`)
-   → [store-label/non-tracking-purchases](../store-label/non-tracking-purchases.md).
+   → [non-tracking-purchases](../../IAP-Subscriptions/non-tracking-purchases/README.md).
 9. The page **MUST** carry a visible **"last updated" date** and that date
    **MUST** be changed whenever the copy changes. Material changes **SHOULD** be
    summarised (a short change note or a dated revision list).
@@ -72,7 +75,8 @@ folder is a cross-cutting requirement that happens to land on it.
 11. The rights section **MUST** name a **working way to exercise each right** —
     erasure, access/export, consent withdrawal — as a link or an address, not
     prose alone: either an in-app entry point or the support route
-    ([PRIV-002](../privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §2–4,
+    ([PAGE-003](PAGE-003-support-route.md),
+    [PRIV-002](../privacy/PRIV-002-gdpr-dsgvo-user-rights.md) §2–4,
     [UI-006](../ui/UI-006-data-privacy-and-support-links.md) §5).
 12. Where the page exposes a **request form** (deletion/export by email), that
     form is a public write endpoint and **MUST** inherit the form requirements:
@@ -81,8 +85,8 @@ folder is a cross-cutting requirement that happens to land on it.
     ([SEC-003](../security/SEC-003-request-integrity-csrf.md)), and a response
     that **MUST NOT** disclose whether the address is registered
     ([SEC-005](../security/SEC-005-account-enumeration.md)). Prefer routing such
-    requests through the existing support flow rather than adding a second
-    endpoint.
+    requests through the existing support flow ([PAGE-003](PAGE-003-support-route.md))
+    rather than adding a second endpoint.
 
 ### Rendering
 
@@ -161,7 +165,7 @@ findings that arrive with a rejection.
 - [ ] `GET https://<prod-host>/privacy` → 200, HTTPS, anonymous, no consent gate.
 - [ ] Legacy privacy paths 301 to `/privacy`; no path in use anywhere returns 404.
 - [ ] Footer link, in-app settings link, and the store-listing privacy URL are byte-identical.
-- [ ] Imprint/Impressum reachable and linked from the page.
+- [ ] Imprint/Impressum reachable and linked from the page ([PAGE-002](PAGE-002-imprint-route.md)).
 - [ ] Page states controller, data collected, purposes, lawful basis, retention, third parties, rights, tracking posture.
 - [ ] Every retention period stated matches a TTL that is actually configured.
 - [ ] Tracking section, store privacy label, and shipped binary agree (`expo config --introspect | grep -c NSUserTracking` → `0` for a no-tracking app).
@@ -177,8 +181,9 @@ findings that arrive with a rejection.
 ## Implementation notes
 
 - Keep the path in one exported constant (e.g. `PRIVACY_URL` next to
-  `SUPPORT_URL`) consumed by the footer, the app's settings screen, and whatever
-  fills the store metadata — §5 holds by construction rather than by review.
+  `SUPPORT_URL` and `IMPRINT_URL`) consumed by the footer, the app's settings
+  screen, and whatever fills the store metadata — §5 holds by construction
+  rather than by review. See [PAGE-002](PAGE-002-imprint-route.md) §7.
 - Legal wording is not an engineering decision. This spec constrains **where the
   page lives, that it is reachable, and that its claims match the system** — it
   does not draft the notice. Have the copy reviewed; the code-side job is
@@ -186,5 +191,6 @@ findings that arrive with a rejection.
 - Where an app has no separate settings screen, the in-app link required by
   [UI-006](../ui/UI-006-data-privacy-and-support-links.md) §1 still has to exist
   somewhere reachable signed-out (about screen, onboarding footer).
-- Related: [[UI-006-data-privacy-and-support-links]],
+- Related: [[PAGE-002-imprint-route]], [[PAGE-003-support-route]],
+  [[UI-006-data-privacy-and-support-links]],
   [[PRIV-002-gdpr-dsgvo-user-rights]], [[UI-008-unified-footer]].

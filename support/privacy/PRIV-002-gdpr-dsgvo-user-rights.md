@@ -9,6 +9,9 @@
 
 1. Each app **MUST** publish a privacy notice (Datenschutz) and, where legally
    required, an imprint (Impressum), reachable from the site/app.
+   Both routes are specified in full by
+   [PAGE-001](../pages/PAGE-001-privacy-route.md) and
+   [PAGE-002](../pages/PAGE-002-imprint-route.md).
 2. Users **MUST** be able to **delete their account and associated personal
    data** (right to erasure). Deletion **MUST** remove or irreversibly anonymize
    the user's records, not just disable login.

@@ -2,6 +2,12 @@
 
 Sparse map of every group folder and every spec. Full intro in [README](README.md).
 
+### pages/
+- [PAGE-001](pages/PAGE-001-privacy-route.md) — The `/privacy` route _(Proposed)_
+- [PAGE-002](pages/PAGE-002-imprint-route.md) — The `/imprint` route (Impressum) _(Proposed)_
+- [PAGE-003](pages/PAGE-003-support-route.md) — The `/support` route _(Proposed)_
+- [PAGE-004](pages/PAGE-004-password-reset-routes.md) — The `/forgot` + `/reset` routes _(Proposed)_
+
 ### design/
 - [UI-001](design/UI-001-responsive-layout.md) — Responsive & adaptive layout _(Proposed)_
 - [UI-002](design/UI-002-visual-design-language.md) — Visual design language (modern, refined, slim) _(Proposed)_
@@ -25,6 +31,7 @@ Sparse map of every group folder and every spec. Full intro in [README](README.m
 - [SYNC-002](sync/SYNC-002-background-sync-cadence.md) — Sync cadence (launch + periodic)
 - [SYNC-003](sync/SYNC-003-durable-credentials.md) — Durable, device-only credentials (stay signed in)
 - [SYNC-004](sync/SYNC-004-sync-status-visibility.md) — Sync status & last-synced visibility
+- [SYNC-005](sync/SYNC-005-local-store-source-of-truth.md) — Local store as source of truth (platform-mirrored sync) _(Proposed)_
 
 ### security/
 - [SEC-001](security/SEC-001-secrets-management.md) — Secrets management
@@ -64,9 +71,15 @@ Sparse map of every group folder and every spec. Full intro in [README](README.m
 - [DEL-001](delivery/DEL-001-infrastructure-as-code.md) — Infrastructure as code
 - [DEL-002](delivery/DEL-002-environments-and-promotion.md) — Environments & promotion
 - [DEL-003](delivery/DEL-003-per-environment-app-identity.md) — Per-environment app identity & builds _(Proposed)_
+- [DEL-004](delivery/DEL-004-agent-operable-screen-capture.md) — Agent-operable screen capture for release assets _(Proposed)_
 
 ### data-and-api/
 - [DATA-001](data-and-api/DATA-001-api-conventions.md) — API conventions
 - [DATA-002](data-and-api/DATA-002-storage-conventions.md) — Storage conventions
 - [DATA-003](data-and-api/DATA-003-schema-versioning-and-migration.md) — Schema versioning & forward migration _(Proposed)_
 - [DATA-004](data-and-api/DATA-004-pagination.md) — Pagination _(Proposed)_
+
+---
+
+**Retired IDs** — never reused: `PRIV-004` (bundle-local draft of the `/privacy`
+route spec, renumbered to [PAGE-001](pages/PAGE-001-privacy-route.md)).

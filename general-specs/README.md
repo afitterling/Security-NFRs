@@ -17,6 +17,7 @@ stable ID (`GROUP-NNN`). IDs never get reused, even if a spec is retired.
 
 | Group | Prefix | Folder |
 |-------|--------|--------|
+| Public pages & routes | `PAGE` | [`pages/`](pages/) |
 | User interface & design | `UI` | [`design/`](design/) |
 | Authentication | `AUTH` | [`authentication/`](authentication/) |
 | Security | `SEC` | [`security/`](security/) |
@@ -49,6 +50,7 @@ These are the apps the specs apply to ("all apps" = this list).
 | **Emergency** (Guarding Angel) | SST + Remix on Lambda, DynamoDB | Device key + one-time web handoff | Remix web + Expo native |
 | **WebhookNotification** | SST + Remix + Lambda, DynamoDB, SES | Self-issued tokens (scrypt + HMAC) | Web + Expo app |
 | **ClickUp API** | Remix proxy | Server-side API token (folder-scoped) | Internal |
+| **Shopping List** | SwiftData + CloudKit mirroring, SST tips API | None (iCloud account held by the OS) | iOS + Mac Catalyst |
 
 > Auth mechanisms differ per app on purpose; the **requirements** in these specs
 > are mechanism-agnostic. A spec says *what* must hold (e.g. "no tokens in URLs"),
@@ -60,4 +62,4 @@ Each spec lists per-app status in its "Implementation notes". A spec marked
 `Adopted` that an app does not yet meet is a **gap** to be tracked in that app's
 backlog, not a reason to weaken the spec.
 
-_Last updated: 2026-06-16._
+_Last updated: 2026-09-06._

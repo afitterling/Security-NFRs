@@ -3,7 +3,7 @@
 - **Status:** Proposed
 - **Group:** User interface & design
 - **Applies to:** Each app's public landing / marketing site and its sub-pages (web).
-- **Last updated:** 2026-07-18
+- **Last updated:** 2026-08-26
 
 ## Requirement
 
@@ -11,10 +11,14 @@
    **unified footer** — the same footer component, in the same place, on every
    page. There **MUST NOT** be per-page footer variants that drift.
 2. The footer **MUST** contain a reachable **imprint / legal notice**
-   (Impressum) and links to the **privacy policy** and **support / contact**
+   (Impressum — [PAGE-002](../pages/PAGE-002-imprint-route.md)) and links to the
+   **privacy policy** ([PAGE-001](../pages/PAGE-001-privacy-route.md)) and
+   **support / contact** ([PAGE-003](../pages/PAGE-003-support-route.md))
    (one source of truth with the in-app links required by
    [UI-006](../ui/UI-006-data-privacy-and-support-links.md)). Where a **terms /
    EULA** page exists it **MUST** be linked here too.
+   The **label** on the imprint link is itself normative — see
+   [PAGE-002](../pages/PAGE-002-imprint-route.md) §3.
 3. The footer **SHOULD** also carry a link to the home route (consistent with the
    navigable header, [UI-007](UI-007-navigable-landing-header.md)) and a
    copyright / legal-entity line.
@@ -51,6 +55,8 @@ risk and a store-review rejection cause.
 
 - Status `Proposed`: adopt when each app's landing site is next revised; audit
   existing pages for any missing or divergent footer and unify them.
+- What each linked page must *contain* is specified in the `PAGE` group; this
+  spec only requires that the footer exists, links them, and does not drift.
 - Shares its privacy/support targets with [UI-006](../ui/UI-006-data-privacy-and-support-links.md)
   (one source of truth) and complements [UI-007](UI-007-navigable-landing-header.md)
   (header home link) — header and footer together bracket every page's navigation.

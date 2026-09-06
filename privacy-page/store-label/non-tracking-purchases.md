@@ -7,8 +7,9 @@ like tracking to App Review and gets the app rejected under **5.1.2(i)**.
 
 Reusable, parameterized. **Nilo** (bundle `tech.sp33c.nilo`, RevenueCat entitlement
 `pro`, Expo/React Native) is the worked example — substitute your own bundle and
-RevenueCat setup. Complements `../app-store-iap-setup/`,
-`../revenuecat-integration/`, and `../storekit-paywall-gating/`.
+RevenueCat setup. Complements `../../IAP-Subscriptions/app-store-iap-setup/`,
+`../../IAP-Subscriptions/revenuecat-integration/`, and
+`../../IAP-Subscriptions/storekit-paywall-gating/`.
 
 > Status: **proven, painful**. This was a rejection on Nilo submission
 > `ffe89067-…` (v1.4.4), then a *repeat* rejection because the stale ATT string
@@ -96,5 +97,5 @@ on their device, or it reads as "doesn't ask". No-tracking avoids this entirely.
 - [ ] Upload a **new binary** — a label-only change won't clear a binary that still
       carries the ATT string.
 
-See also `../revenuecat-integration/attribution-and-webhook-sync.md` for what
+See also `../../IAP-Subscriptions/revenuecat-integration/attribution-and-webhook-sync.md` for what
 RevenueCat actually collects.
