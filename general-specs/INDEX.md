@@ -42,6 +42,8 @@ Sparse map of every group folder and every spec. Full intro in [README](README.m
 - [SEC-006](security/SEC-006-edge-rate-limiting.md) — Edge rate limiting & DDoS protection
 - [SEC-007](security/SEC-007-infra-change-integrity.md) — Infrastructure change integrity (stack fingerprint)
 - [SEC-008](security/SEC-008-resource-tagging.md) — Resource tagging
+- [SEC-009](security/SEC-009-dependency-and-build-supply-chain.md) — Dependency & build supply-chain integrity _(Proposed)_
+- [SEC-010](security/SEC-010-sbom-and-vulnerability-response.md) — Software Bill of Materials (SBOM) & vulnerability response _(Proposed)_
 
 ### privacy/
 - [PRIV-001](privacy/PRIV-001-data-minimization-and-retention.md) — Data minimization & retention

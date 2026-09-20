@@ -62,4 +62,4 @@ Each spec lists per-app status in its "Implementation notes". A spec marked
 `Adopted` that an app does not yet meet is a **gap** to be tracked in that app's
 backlog, not a reason to weaken the spec.
 
-_Last updated: 2026-09-06._
+_Last updated: 2026-09-20._

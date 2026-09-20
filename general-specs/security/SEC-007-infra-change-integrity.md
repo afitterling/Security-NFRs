@@ -67,6 +67,8 @@ explicit re-pinning keeps the pin a human decision, not a rubber stamp.
   matrix on PRs and pushes touching `sst/**`. No dependencies — node builtins +
   git only.
 - **Relationship to signing:** a signed git tag over the commit covers source
-  provenance; this NFR adds a scoped, per-stage, normalized pin on top. For full
-  artifact provenance, pair with cosign/SLSA attestation binding commit → bundle
-  hash → fingerprint (out of scope here).
+  provenance; this NFR adds a scoped, per-stage, normalized pin on top. Full
+  artifact provenance (cosign/SLSA attestation binding commit → bundle hash →
+  fingerprint) and the integrity of the dependencies inside that bundle are
+  covered by [SEC-009](SEC-009-dependency-and-build-supply-chain.md); the
+  inventory of what shipped is [SEC-010](SEC-010-sbom-and-vulnerability-response.md).

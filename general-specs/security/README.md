@@ -3,8 +3,8 @@
 Cross-cutting controls that protect every app from abuse and compromise,
 independent of feature set. Authentication-specific rules live in
 [`authentication/`](../authentication/); this group covers secrets, abuse
-prevention, request integrity, transport/at-rest protection, enumeration, and
-edge/CDN abuse defense.
+prevention, request integrity, transport/at-rest protection, enumeration,
+edge/CDN abuse defense, and the integrity of the third-party code we ship.
 
 | ID | Title | Status |
 |----|-------|--------|
@@ -16,3 +16,5 @@ edge/CDN abuse defense.
 | [SEC-006](SEC-006-edge-rate-limiting.md) | Edge rate limiting & DDoS protection | Adopted |
 | [SEC-007](SEC-007-infra-change-integrity.md) | Infrastructure change integrity (stack fingerprint) | Adopted |
 | [SEC-008](SEC-008-resource-tagging.md) | Resource tagging | Adopted |
+| [SEC-009](SEC-009-dependency-and-build-supply-chain.md) | Dependency & build supply-chain integrity | Proposed |
+| [SEC-010](SEC-010-sbom-and-vulnerability-response.md) | Software Bill of Materials (SBOM) & vulnerability response | Proposed |
