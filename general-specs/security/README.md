@@ -6,6 +6,8 @@ independent of feature set. Authentication-specific rules live in
 prevention, request integrity, transport/at-rest protection, enumeration,
 edge/CDN abuse defense, the integrity of the third-party code we ship, and what
 an attacker gets from holding the device.
+[SEC-013](SEC-013-security-by-design.md) is the design-time entry point to all of
+them — read it first when starting something new.
 
 | ID | Title | Status |
 |----|-------|--------|
@@ -21,3 +23,4 @@ an attacker gets from holding the device.
 | [SEC-010](SEC-010-sbom-and-vulnerability-response.md) | Software Bill of Materials (SBOM) & vulnerability response | Proposed |
 | [SEC-011](SEC-011-build-provenance-and-attestation.md) | Build provenance & artifact attestation | Proposed |
 | [SEC-012](SEC-012-apple-client-local-attack-hardening.md) | Apple client hardening against local attacks (the Swift run-through) | Proposed |
+| [SEC-013](SEC-013-security-by-design.md) | Security & privacy by design (and by default) | Proposed |

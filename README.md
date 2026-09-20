@@ -5,7 +5,7 @@ rewrite in every app** — stated once, reused, instead of copy-pasted and drift
 
 ## Canonical specs
 
-**[`general-specs/`](general-specs/)** — 55 numbered specs, RFC 2119 keywords,
+**[`general-specs/`](general-specs/)** — 56 numbered specs, RFC 2119 keywords,
 each with status · applicability · requirement · rationale · acceptance criteria.
 → **[INDEX.md](general-specs/INDEX.md)** lists every one.
 
