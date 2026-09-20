@@ -18,3 +18,4 @@ edge/CDN abuse defense, and the integrity of the third-party code we ship.
 | [SEC-008](SEC-008-resource-tagging.md) | Resource tagging | Adopted |
 | [SEC-009](SEC-009-dependency-and-build-supply-chain.md) | Dependency & build supply-chain integrity | Proposed |
 | [SEC-010](SEC-010-sbom-and-vulnerability-response.md) | Software Bill of Materials (SBOM) & vulnerability response | Proposed |
+| [SEC-011](SEC-011-build-provenance-and-attestation.md) | Build provenance & artifact attestation | Proposed |

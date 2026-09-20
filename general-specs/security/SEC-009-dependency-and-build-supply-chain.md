@@ -7,7 +7,9 @@
   Manager targets, and the CI workflows that deploy them. Complements
   [SEC-001](SEC-001-secrets-management.md) (secrets), [SEC-007](SEC-007-infra-change-integrity.md)
   (the sources that determine the stack), and [SEC-010](SEC-010-sbom-and-vulnerability-response.md)
-  (the inventory of what shipped).
+  (the inventory of what shipped), and
+  [SEC-011](SEC-011-build-provenance-and-attestation.md) (proof of which build
+  produced it).
 - **Last updated:** 2026-09-20
 
 ## Requirement
@@ -45,8 +47,10 @@
    URL at build or run time.
 8. Releases **SHOULD** be traceable from the shipped artifact back to a reviewed
    commit: a signed tag over the commit at minimum, and an attestation binding
-   commit → artifact digest where the platform supports it (SLSA/cosign, GitHub
-   artifact attestations, App Store build records).
+   commit → artifact digest where the platform supports it. The full requirement
+   — platform-issued provenance, keyless signing, and verification at deploy time
+   — is [SEC-011](SEC-011-build-provenance-and-attestation.md); this clause is
+   the floor for repos that have not adopted it yet.
 
 ## Rationale
 
@@ -95,6 +99,8 @@ automated check passes on a signed, hashed, frozen malicious dependency.
   8 still apply.
 - **GitHub Actions:** SHA-pinning is compatible with Dependabot — it rewrites the
   SHA and keeps the human-readable tag as a trailing comment.
-- **Open gap:** attestation (clause 8) is `SHOULD` because the Expo/EAS and App
-  Store paths do not yet give us a verifiable commit → artifact binding we
-  control end to end. Signed tags are the interim floor.
+- **Open gap:** attestation stays `SHOULD` here because the Expo/EAS and App
+  Store paths do not give us a verifiable commit → artifact binding we control
+  end to end; signed tags are the interim floor. See
+  [SEC-011](SEC-011-build-provenance-and-attestation.md) clause 10 for how that
+  gap is recorded rather than glossed.
