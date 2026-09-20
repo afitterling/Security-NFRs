@@ -2,7 +2,8 @@
 
 - **Status:** Adopted
 - **Group:** Security
-- **Applies to:** All apps and stored data.
+- **Applies to:** All apps and stored data. At-rest protection *on an Apple client
+  device* is [SEC-012](SEC-012-apple-client-local-attack-hardening.md).
 - **Last updated:** 2026-06-16
 
 ## Requirement

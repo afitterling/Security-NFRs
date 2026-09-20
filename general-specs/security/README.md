@@ -4,7 +4,8 @@ Cross-cutting controls that protect every app from abuse and compromise,
 independent of feature set. Authentication-specific rules live in
 [`authentication/`](../authentication/); this group covers secrets, abuse
 prevention, request integrity, transport/at-rest protection, enumeration,
-edge/CDN abuse defense, and the integrity of the third-party code we ship.
+edge/CDN abuse defense, the integrity of the third-party code we ship, and what
+an attacker gets from holding the device.
 
 | ID | Title | Status |
 |----|-------|--------|
@@ -19,3 +20,4 @@ edge/CDN abuse defense, and the integrity of the third-party code we ship.
 | [SEC-009](SEC-009-dependency-and-build-supply-chain.md) | Dependency & build supply-chain integrity | Proposed |
 | [SEC-010](SEC-010-sbom-and-vulnerability-response.md) | Software Bill of Materials (SBOM) & vulnerability response | Proposed |
 | [SEC-011](SEC-011-build-provenance-and-attestation.md) | Build provenance & artifact attestation | Proposed |
+| [SEC-012](SEC-012-apple-client-local-attack-hardening.md) | Apple client hardening against local attacks (the Swift run-through) | Proposed |

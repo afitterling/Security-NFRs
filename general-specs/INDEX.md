@@ -45,6 +45,7 @@ Sparse map of every group folder and every spec. Full intro in [README](README.m
 - [SEC-009](security/SEC-009-dependency-and-build-supply-chain.md) — Dependency & build supply-chain integrity _(Proposed)_
 - [SEC-010](security/SEC-010-sbom-and-vulnerability-response.md) — Software Bill of Materials (SBOM) & vulnerability response _(Proposed)_
 - [SEC-011](security/SEC-011-build-provenance-and-attestation.md) — Build provenance & artifact attestation _(Proposed)_
+- [SEC-012](security/SEC-012-apple-client-local-attack-hardening.md) — Apple client hardening against local attacks (the Swift run-through) _(Proposed)_
 
 ### privacy/
 - [PRIV-001](privacy/PRIV-001-data-minimization-and-retention.md) — Data minimization & retention
