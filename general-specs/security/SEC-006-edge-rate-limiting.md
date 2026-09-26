@@ -88,7 +88,7 @@ without affecting normal browsing.
 
 - **Where ACLs live (account 327261196437):** all CloudFront Web ACLs are defined
   in one place — the typed `ACLS` array of the central `waf-acls` SST app
-  (`AWS-Admin/WAF (sst)/sst.config.ts`, see its `docs/ADR-0001-waf-single-source-of-truth.md`).
+  (`Admin-Home/AWS-Firewall/sst.config.ts`, see its `docs/ADR-0001-waf-single-source-of-truth.md`).
   It publishes each ACL's ARN to SSM at `/waf/<stage>/<name>`. An app stack
   **MUST NOT** create its own `aws.wafv2.WebAcl` or pin an ACL ARN; it reads the
   SSM parameter (us-east-1) and sets its distribution's `webAclId`. Simple sites
