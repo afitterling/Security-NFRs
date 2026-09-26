@@ -91,19 +91,27 @@ without affecting normal browsing.
   (`Admin-Home/AWS-Firewall/sst.config.ts`, see its `docs/ADR-0001-waf-single-source-of-truth.md`).
   It publishes each ACL's ARN to SSM at `/waf/<stage>/<name>`. An app stack
   **MUST NOT** create its own `aws.wafv2.WebAcl` or pin an ACL ARN; it reads the
-  SSM parameter (us-east-1) and sets its distribution's `webAclId`. Simple sites
-  bind the shared baseline `WAF202606`; an app that needs path-scoped rules or a
-  managed-rule override gets its own entry in that array.
-- **PingTray (`sp33c-landing`):** `sst.config.ts` provisions an
-  `aws.wafv2.WebAcl` (scope `CLOUDFRONT`, via a dedicated `us-east-1` provider)
-  with two rate-based rules:
-  - `RateLimitPosts` — 50 req / 5 min / IP, scoped down to `method = POST`
-    (the contact-form / email-bomb vector).
-  - `RateLimitAll` — 2000 req / 5 min / IP, broad backstop for L7 / cache-busting
-    floods against the SSR Lambda.
-  Attached to the CloudFront distribution via the Remix component's
-  `transform.cdn.distribution.webAclId`, production-only. L3/L4 is handled
-  automatically by AWS Shield Standard on CloudFront.
+  SSM parameter (us-east-1) and sets its distribution's `webAclId`. **Every**
+  site binds the one shared ACL `WAF202606` (ADR-0001, 2026-09-26). App-specific
+  needs go inside it: a path-scoped limit on a path only that app serves, or a
+  host excluded from a managed group. A second ACL is not added. The app's
+  `CONSUMERS` registry lists every bound stack.
+- **Binding:** on the component, set the nested distribution transform:
+  `transform: { cdn: { transform: { distribution: (a) => { a.webAclId = arn } } } }`.
+  Setting `webAclId` on `CdnArgs` itself is a silent no-op. In SST 4.x
+  `CdnArgs.webAclArn` also works. Reference: `macos/ping-monitor/sst/sst.config.ts`.
+- **Limits in WAF202606** (per source IP, 5 minutes):
+
+  | Rule | Limit | Scope | Why |
+  |---|---|---|---|
+  | `RateLimitAll` | 2000 | everything | §2 broad backstop |
+  | `RateLimitPosts` | 50 | POST, except `/mcp` | §3 cost-bearing submits; MCP vendors share egress IPs |
+  | `RateLimitFinWiseAuthPages` | 20 | `/profile/` | FinWise login/sign-up |
+  | `RateLimitFinWiseSettlements` | 300 | `/settlements` | FinWise spec §08 AS8 |
+
+  Managed groups: CommonRuleSet (`SizeRestrictions_BODY` → count),
+  KnownBadInputs, AmazonIpReputationList. `purchaselist.app` skips the first two
+  by host, because free-text shopping lists trip them.
 - **Cost:** an AWS WAF Web ACL is ~US$5/mo + ~$1/mo per rule + ~$0.60 per million
   evaluated requests — order ~US$7/mo for a low-traffic marketing site, far below
   the denial-of-wallet exposure it caps.
