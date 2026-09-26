@@ -6,7 +6,7 @@
   (SSR/Lambda) behind it — especially sites with cost-bearing POST endpoints
   (contact/support forms, email-send). Backs [SEC-002](SEC-002-rate-limiting-and-lockout.md) §4
   at the edge layer.
-- **Last updated:** 2026-06-20
+- **Last updated:** 2026-09-26
 
 ## Requirement
 
@@ -33,6 +33,35 @@
    (e.g. AWS Shield Standard) at no extra config — but this **MUST NOT** be
    relied on for application-layer (L7) abuse, which requires rules 1–3.
 
+## Standard limits
+
+Every Web ACL starts from these numbers. They are per **source IP**, per
+**5-minute** window (WAF's default evaluation window), and a request over the
+limit gets the uniform edge `429` from rule 5.
+
+| Rule | Scope | Limit / 5 min / IP | Covers |
+|---|---|---|---|
+| Broad backstop | every request | **2000** | §2 — L7 floods, cache-busting query strings |
+| Cost-bearing POST | `method = POST` | **50** | §3 — contact/support forms, email send, model calls, record writes |
+| Managed rule groups | every request | — | AWS `CommonRuleSet`, `KnownBadInputsRuleSet`, `AmazonIpReputationList` on every ACL |
+
+- **Deviations** — a different number, a different window, or a limit scoped to
+  a path — **MUST** carry the reason next to the rule in code (the central
+  `waf-acls` app refuses to deploy a deviating rule without a `reason`).
+  A tighter limit for one expensive path (e.g. 20 POSTs to an AI endpoint) is
+  the normal kind of deviation.
+- **WAF's floor is 10**, not 100. AWS lowered the minimum rate-based limit from
+  100 to 10 in 2024; `aws wafv2 check-capacity` confirms it (limit 9 is rejected
+  with "valid min value: 10", 10 is accepted), and a live ACL already runs at
+  20. Code comments that say "100 is WAF's floor" are out of date. The standard
+  POST limit of 50 was therefore always valid; it stays at 50 because 50 submits
+  in five minutes is far past any person and still low enough to make
+  email-bombing slow.
+- **Bodies over 8 KB.** The CommonRuleSet's `SizeRestrictions_BODY` blocks them,
+  which breaks ordinary JSON APIs and uploads. Where the app caps its own body
+  size in code, override that one rule to `count` (it stays labelled and
+  logged); do not drop the whole group.
+
 ## Rationale
 
 SSR/loader requests and form POSTs bypass the CDN cache and invoke origin
@@ -57,6 +86,14 @@ without affecting normal browsing.
 
 ## Implementation notes
 
+- **Where ACLs live (account 327261196437):** all CloudFront Web ACLs are defined
+  in one place — the typed `ACLS` array of the central `waf-acls` SST app
+  (`AWS-Admin/WAF (sst)/sst.config.ts`, see its `docs/ADR-0001-waf-single-source-of-truth.md`).
+  It publishes each ACL's ARN to SSM at `/waf/<stage>/<name>`. An app stack
+  **MUST NOT** create its own `aws.wafv2.WebAcl` or pin an ACL ARN; it reads the
+  SSM parameter (us-east-1) and sets its distribution's `webAclId`. Simple sites
+  bind the shared baseline `WAF202606`; an app that needs path-scoped rules or a
+  managed-rule override gets its own entry in that array.
 - **PingTray (`sp33c-landing`):** `sst.config.ts` provisions an
   `aws.wafv2.WebAcl` (scope `CLOUDFRONT`, via a dedicated `us-east-1` provider)
   with two rate-based rules:
