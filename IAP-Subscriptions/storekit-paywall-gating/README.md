@@ -13,6 +13,10 @@ Reference implementation: PingTray (`swift/Sources/PingTray/Store.swift`,
 $2.99 one-time, unlocks user-defined monitored hosts; the default host stays free.
 
 ## Non-functional requirements
+
+> Tier model, throttling, lapse behaviour and paid iCloud sync are specified in
+> **[IAP-004](../specs/IAP-004-payment-gating-freemium-throttling-sync.md)**; this
+> playbook is its StoreKit-only worked example.
 1. **Single source of truth for entitlement.** `isUnlocked` is derived *only* from
    `Transaction.currentEntitlements`. No cached UserDefaults "unlocked" flag — a flag is a
    free-unlock backdoor and can desync from the real entitlement.

@@ -121,6 +121,10 @@ devices' changes.
 | SYNC-003 durable credentials | Not applicable: the account is held by the OS, the app holds nothing. |
 | SYNC-004 status visibility | **Still applies.** The platform exposes little status; an app that shows none is carrying a gap, not an exemption. |
 
+Where sync is sold as a paid capability, [IAP-004](../../IAP-Subscriptions/specs/IAP-004-payment-gating-freemium-throttling-sync.md)
+Part D adds the rules: one store file in both modes, lapse pauses and never deletes,
+and the one permitted iCloud sign-in hint for paying users (an exception to (2)).
+
 ## Rationale
 
 A platform mirror removes an entire backend, an account system and a merge

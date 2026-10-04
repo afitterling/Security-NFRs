@@ -33,6 +33,11 @@ Most "the app shows Pro but the web doesn't" bugs live in that gap.
 
 ## Non-functional requirements (locked)
 
+> Numbered, with acceptance criteria and the rules added since (identity lifecycle,
+> single transaction finisher, ordering, reconcile, deletion, observability):
+> **[IAP-003](../specs/IAP-003-revenuecat-integration-baseline.md)**. The list below
+> is the short form; IAP-003 wins where they differ.
+
 1. **The webhook is the only source of backend truth.** The server sets its `pro`
    flag *exclusively* from verified RevenueCat webhooks. Never let the device
    POST "I'm Pro" — that's a free-unlock backdoor. (Mirrors the StoreKit spec's

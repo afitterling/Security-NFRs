@@ -18,6 +18,8 @@ stable `IAP-NNN` IDs, RFC 2119 keywords, acceptance criteria.
 |---|---|---|
 | [IAP-001](specs/IAP-001-purchase-progress-feedback.md) | Purchase progress & outcome feedback — show what the purchase is doing while it's in flight; resolve into exactly one stated outcome (bought / cancelled / pending / failed). | _Proposed_ |
 | [IAP-002](specs/IAP-002-price-display-fidelity.md) | Price display fidelity — every price shown outside the store UI is generated from the store's own price schedules, never hand-maintained. | _Proposed_ |
+| [IAP-003](specs/IAP-003-revenuecat-integration-baseline.md) | RevenueCat integration baseline — keys, account attribution & identity lifecycle, one transaction finisher, webhook-only backend truth (idempotent, order-safe), reconcile, privacy. | _Proposed_ |
+| [IAP-004](specs/IAP-004-payment-gating-freemium-throttling-sync.md) | Payment gating — freemium, quantity & rate throttling, enforcement by cost (client vs. server), no data hostage on lapse, iCloud sync as a Pro capability. | _Proposed_ |
 
 ## Playbooks
 
@@ -39,10 +41,11 @@ Ordered the way you'd hit them building an app:
    user taps Buy ──► IAP-001 (progress & outcome feedback)
           │
           ▼
- revenuecat-integration ──► purchase attributed to an account,
+ revenuecat-integration ──► purchase attributed to an account,      (IAP-003)
           │                  webhook sets the backend entitlement
           ▼
  storekit-paywall-gating ──► the client gates the feature off that entitlement
+          │                  — free tier, throttles, paid sync      (IAP-004)
           │
           ▼
  non-tracking-purchases ──► the privacy label & shipped binary must match all of it
