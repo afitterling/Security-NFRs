@@ -7,6 +7,21 @@ Sparse map of every group folder and every spec. Full intro in [README](README.m
 - [PAGE-002](pages/PAGE-002-imprint-route.md) — The `/imprint` route (Impressum) _(Proposed)_
 - [PAGE-003](pages/PAGE-003-support-route.md) — The `/support` route _(Proposed)_
 - [PAGE-004](pages/PAGE-004-password-reset-routes.md) — The `/forgot` + `/reset` routes _(Proposed)_
+- [PAGE-005](pages/PAGE-005-terms-route.md) — The `/terms` route (Terms of Use / EULA) _(Proposed)_
+
+### landing/
+- [LAND-001](landing/LAND-001-landing-page-anatomy.md) — Landing page anatomy & section anchors _(Proposed)_
+- [LAND-002](landing/LAND-002-calls-to-action-and-store-links.md) — Calls to action & store links _(Proposed)_
+- [LAND-003](landing/LAND-003-responsive-navigation.md) — Responsive navigation & off-canvas drawer _(Proposed)_
+- [LAND-004](landing/LAND-004-language-and-locale-persistence.md) — Language switcher, locale persistence & cache safety _(Proposed)_
+- [LAND-005](landing/LAND-005-pricing-section.md) — Pricing section _(Proposed)_
+- [LAND-006](landing/LAND-006-showcase-media-pipeline.md) — Showcase media pipeline & responsive images _(Proposed)_
+- [LAND-007](landing/LAND-007-security-overview-page.md) — Public security overview (`/security`) _(Proposed)_
+- [LAND-008](landing/LAND-008-docs-and-setup-guides.md) — Documentation & setup-guide pages _(Proposed)_
+- [LAND-009](landing/LAND-009-document-shell.md) — Document shell: head, focus, motion & zoom _(Proposed)_
+- [LAND-010](landing/LAND-010-icons-manifest-and-well-known-files.md) — Site icons, manifest & well-known files _(Proposed)_
+- [LAND-011](landing/LAND-011-not-found-scanners-and-legacy-redirects.md) — Not-found pages, scanner traffic & legacy redirects _(Proposed)_
+- [LAND-012](landing/LAND-012-truthful-marketing-claims.md) — Truthful marketing claims _(Proposed)_
 
 ### design/
 - [UI-001](design/UI-001-responsive-layout.md) — Responsive & adaptive layout _(Proposed)_

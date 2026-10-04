@@ -10,11 +10,12 @@ account.
 | [PAGE-002](PAGE-002-imprint-route.md) | The `/imprint` route (Impressum) | Proposed |
 | [PAGE-003](PAGE-003-support-route.md) | The `/support` route | Proposed |
 | [PAGE-004](PAGE-004-password-reset-routes.md) | The `/forgot` + `/reset` routes | Proposed |
+| [PAGE-005](PAGE-005-terms-route.md) | The `/terms` route (Terms of Use / EULA) | Proposed |
 
 ## Why this group exists
 
 Every other group here states a requirement that is **true of many surfaces** —
-"forms are rate-limited", "pages are localized", "no tokens in URLs". These four
+"forms are rate-limited", "pages are localized", "no tokens in URLs". These
 specs are the inverse: each is about **one route**, and says where it lives, that
 it resolves, what it must contain, and which cross-cutting rules land on it.
 
@@ -33,14 +34,14 @@ serves**. If it constrains behaviour that recurs across many routes, it belongs
 in the group that owns that behaviour (`SEC`, `A11Y`, `I18N`, `SEO`, …) and gets
 *referenced* from here.
 
-Not every route is a `PAGE` spec: the landing page is governed by `UI-005` /
-`UI-007`, the footer by `UI-008`, `robots.txt` and `sitemap.xml` by `SEO-001` /
+Not every route is a `PAGE` spec: the landing page is governed by the
+[`LAND`](../landing/README.md) group plus `UI-005` / `UI-007`, the footer by `UI-008`, `robots.txt` and `sitemap.xml` by `SEO-001` /
 `SEO-002`. Those are page-shaped but their requirements are presentational or
 SEO-owned, and they already have homes.
 
 ## Shape
 
-All four follow the same skeleton, so they can be reviewed against each other:
+All of them follow the same skeleton, so they can be reviewed against each other:
 
 1. **Route & reachability** — the stable path, HTTPS/200, signed-out, no
    identifier in the URL, where it's linked from, one exported URL constant.

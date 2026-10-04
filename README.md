@@ -5,13 +5,14 @@ rewrite in every app** — stated once, reused, instead of copy-pasted and drift
 
 ## Canonical specs
 
-**[`general-specs/`](general-specs/)** — 56 numbered specs, RFC 2119 keywords,
+**[`general-specs/`](general-specs/)** — 71 numbered specs, RFC 2119 keywords,
 each with status · applicability · requirement · rationale · acceptance criteria.
 → **[INDEX.md](general-specs/INDEX.md)** lists every one.
 
 | Group | Prefix | |
 |---|---|---|
 | Public pages & routes | `PAGE` | [pages/](general-specs/pages/) |
+| Landing page | `LAND` | [landing/](general-specs/landing/) |
 | UI & design | `UI` | [design/](general-specs/design/) · [ui/](general-specs/ui/) |
 | Authentication | `AUTH` | [authentication/](general-specs/authentication/) |
 | Security | `SEC` | [security/](general-specs/security/) |
@@ -35,7 +36,7 @@ without hunting. Specs are copies; `general-specs/` stays authoritative.
 
 Worked recipes for what bites once per app.
 
-- **[`IAP-Subscriptions/`](IAP-Subscriptions/README.md)** — **in-app purchases only**, end to end. Numbered `IAP-NNN` specs ([IAP-001](IAP-Subscriptions/specs/IAP-001-purchase-progress-feedback.md) — purchase progress & outcome feedback; [IAP-002](IAP-Subscriptions/specs/IAP-002-price-display-fidelity.md) — price display fidelity) plus the playbooks:
+- **[`IAP-Subscriptions/`](IAP-Subscriptions/README.md)** — **in-app purchases only**, end to end. Numbered `IAP-NNN` specs ([IAP-001](IAP-Subscriptions/specs/IAP-001-purchase-progress-feedback.md) — purchase progress & outcome feedback; [IAP-002](IAP-Subscriptions/specs/IAP-002-price-display-fidelity.md) — price display fidelity; [IAP-003](IAP-Subscriptions/specs/IAP-003-revenuecat-integration-baseline.md) — RevenueCat integration baseline; [IAP-004](IAP-Subscriptions/specs/IAP-004-payment-gating-freemium-throttling-sync.md) — payment gating: freemium, throttling, paid iCloud sync) plus the playbooks:
   - [`app-store-iap-setup/`](IAP-Subscriptions/app-store-iap-setup/README.md) — API-driven IAP setup (App Store Connect + RevenueCat).
   - [`revenuecat-integration/`](IAP-Subscriptions/revenuecat-integration/README.md) — entitlement sync, webhooks, the multi-app trap.
   - [`storekit-paywall-gating/`](IAP-Subscriptions/storekit-paywall-gating/README.md) — macOS client-side gating & sandbox testing.

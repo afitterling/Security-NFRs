@@ -16,7 +16,7 @@
    **support / contact** ([PAGE-003](../pages/PAGE-003-support-route.md))
    (one source of truth with the in-app links required by
    [UI-006](../ui/UI-006-data-privacy-and-support-links.md)). Where a **terms /
-   EULA** page exists it **MUST** be linked here too.
+   EULA** page exists ([PAGE-005](../pages/PAGE-005-terms-route.md)) it **MUST** be linked here too.
    The **label** on the imprint link is itself normative — see
    [PAGE-002](../pages/PAGE-002-imprint-route.md) §3.
 3. The footer **SHOULD** also carry a link to the home route (consistent with the
