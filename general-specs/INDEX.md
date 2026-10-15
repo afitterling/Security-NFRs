@@ -98,6 +98,7 @@ Sparse map of every group folder and every spec. Full intro in [README](README.m
 - [DATA-002](data-and-api/DATA-002-storage-conventions.md) — Storage conventions
 - [DATA-003](data-and-api/DATA-003-schema-versioning-and-migration.md) — Schema versioning & forward migration _(Proposed)_
 - [DATA-004](data-and-api/DATA-004-pagination.md) — Pagination _(Proposed)_
+- [DATA-005](data-and-api/DATA-005-backups-and-restore.md) — Backups & restore
 
 ---
 
