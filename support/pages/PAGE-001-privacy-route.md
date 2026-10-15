@@ -4,10 +4,11 @@
 - **Group:** Public pages & routes
 - **Applies to:** Every app's public web surface. The native clients link *to*
   this route rather than reimplementing it ([UI-006](../ui/UI-006-data-privacy-and-support-links.md) §1).
-- **Last updated:** 2026-08-26
+- **Last updated:** 2026-10-15
 - **History:** Drafted as bundle-local `PRIV-004` in `privacy-page/route/`;
   promoted here when the `PAGE` group was created. `PRIV-004` is **retired
   unused** and MUST NOT be reassigned.
+  2026-10-15: added §23 (security-monitoring / SIEM disclosure).
 
 This spec is about the **route itself** — where it lives, that it resolves, and
 that its claims match the shipped system. The cross-cutting requirements that
@@ -146,6 +147,34 @@ happen to land on it live in their own groups and are linked from here.
     [DEL-002](../delivery/DEL-002-environments-and-promotion.md)); the store
     listing and in-app links **MUST** point at production only.
 
+### Security monitoring disclosure
+
+23. Every app whose server, WAF, CloudFront/API Gateway or Lambda logs are
+    forwarded to the security monitoring system (the Wazuh SIEM on Hetzner)
+    **MUST** disclose it in its privacy notice, as its own section placed next
+    to the hosting / server-log section, in every reviewed locale. Use this
+    approved copy verbatim:
+
+    - **DE:** „Sicherheits-Monitoring: Zum Schutz unserer Systeme vor Angriffen
+      und Missbrauch werten wir Server-, Firewall- und Anwendungsprotokolle
+      (u. a. IP-Adresse, Zeitpunkt, aufgerufene Adresse, Browser-Kennung,
+      Fehlermeldungen) in einem Sicherheits-Monitoringsystem aus. Es wird auf
+      Servern der Hetzner Online GmbH in Deutschland betrieben. Rechtsgrundlage
+      ist unser berechtigtes Interesse an der IT-Sicherheit (Art. 6 Abs. 1
+      lit. f DSGVO, Erwägungsgrund 49). Die Daten werden nach 90 Tagen
+      gelöscht, sofern sie nicht zur Aufklärung eines Sicherheitsvorfalls
+      benötigt werden.“
+    - **EN:** "Security monitoring: To protect our systems against attacks and
+      misuse, we analyse server, firewall and application logs (including IP
+      address, time, requested address, browser identifier and error messages)
+      in a security monitoring system. It runs on servers of Hetzner Online GmbH
+      in Germany. The legal basis is our legitimate interest in IT security
+      (Art. 6(1)(f) GDPR, Recital 49). The data is deleted after 90 days unless
+      it is needed to investigate a security incident."
+
+    The 90-day statement is a retention claim under §7: the SIEM's index
+    retention **MUST** actually be configured to match it.
+
 ## Rationale
 
 A privacy notice fails in two directions, and both are cheap to prevent and
@@ -177,6 +206,7 @@ findings that arrive with a rejection.
 - [ ] Indexing posture is consistent across `robots.txt`, sitemap, canonical, and `<meta robots>`.
 - [ ] Route renders with the datastore unreachable; an uptime check alerts on non-200.
 - [ ] Preview/staging copies are `noindex` and are not the URL filed with the stores.
+- [ ] The security-monitoring (SIEM) section from §23 is present in every locale, next to the hosting/server-log section, and the SIEM retention matches the stated 90 days.
 
 ## Implementation notes
 
